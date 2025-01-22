@@ -7,6 +7,7 @@ import streamlit as st
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
+import pandas as pd
 
 
 ###########
@@ -96,15 +97,44 @@ if ingredients_list:
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.content)
+#try:
+  #  data = smoothiefroot_response.json()
+   # st.json(data)  # Pretty-print JSON data in Streamlit
+#except requests.exceptions.JSONDecodeError:
+ #   st.error("The API did not return valid JSON data.")
+  #  st.text(smoothiefroot_response.text)
+
+
 try:
     # Parse the response as JSON
     data = smoothiefroot_response.json()
-    st.json(data)  # Pretty-print JSON data in Streamlit
+
+    # Convert the JSON data into a DataFrame
+    # Check if the data is already a list (e.g., [{'key': 'value'}, ...]) or a dictionary
+    if isinstance(data, dict):
+        # Convert a single dictionary to a list of dictionaries for tabular display
+        df = pd.DataFrame([data])
+    elif isinstance(data, list):
+        # Directly convert the list of dictionaries to a DataFrame
+        df = pd.DataFrame(data)
+    else:
+        st.error("The API response format is not supported for a table.")
+        st.text(smoothiefroot_response.text)
+        df = None
+
+    # Display the DataFrame in Streamlit
+    if df is not None:
+        st.dataframe(df, use_container_width=True)
+
 except requests.exceptions.JSONDecodeError:
     st.error("The API did not return valid JSON data.")
-    st.text(smoothiefroot_response.text)
-    
+    st.text(smoothiefroot_response.text)  
+
+
+
+
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
 st.text(smoothiefroot_response)
 #("https://my.smoothiefroot.com/api/fruit/watermelon"
+
