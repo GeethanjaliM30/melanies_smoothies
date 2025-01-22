@@ -10,13 +10,13 @@ from snowflake.snowpark.functions import col
 ###########
 # Define connection parameters
 connection_parameters = {
-    "account": "your_account_id",
-    "user": "your_username",
-    "password": "your_password",
-    "role": "your_role",
-    "warehouse": "your_warehouse",
-    "database": "your_database",
-    "schema": "your_schema",
+    "account": "AHOIGHT-MDB97041",
+    "user": "ANJALI30",
+    "password": "123Gumpaste2002",
+    "role": "SYSADMIN",
+    "warehouse": "COMPUTE_WH",
+    "database": "SMOOTHIES",
+    "schema": "PUBLIC"
 }
 
 # Attempt to create a session
