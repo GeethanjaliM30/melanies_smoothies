@@ -19,7 +19,7 @@ session=cnx.session()
 connection_parameters={
     "account":"AHOIGHT-MDB97041",
     "user":"ANJALI30",
-    "password":"123Gumpaste2002:
+    "password":"123Gumpaste2002"
 }
 new_session=Session.builder.configs(connection_parameters).create()
 #session = get_active_session()
