@@ -27,9 +27,9 @@ connection_parameters = {
 # Attempt to create a session
 try:
     new_session = Session.builder.configs(connection_parameters).create()
-    st.success("Successfully connected to Snowflake!")
-#except Exception as e:
-    #st.error(f"Error creating Snowflake session: {e}")
+    #st.success("Successfully connected to Snowflake!")
+except Exception as e:
+    st.error(f"Error creating Snowflake session: {e}")
 ########
 
 
