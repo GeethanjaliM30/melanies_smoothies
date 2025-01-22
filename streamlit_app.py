@@ -94,9 +94,16 @@ if ingredients_list:
 #st.text(smoothiefroot_response.json)
 ###sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 import requests
-smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
-st.text(smoothiefroot_response.content)
-
+smoothiefroot_response = requests.get("https://www.fruityvice.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response.content)
+try:
+    # Parse the response as JSON
+    data = smoothiefroot_response.json()
+    st.json(data)  # Pretty-print JSON data in Streamlit
+except requests.exceptions.JSONDecodeError:
+    st.error("The API did not return valid JSON data.")
+    st.text(smoothiefroot_response.text)
+    
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
 st.text(smoothiefroot_response)
