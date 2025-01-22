@@ -1,9 +1,34 @@
 #pip install snowflake-snowpark-python
 
 # Import python packages
+from snowflake.snowpark.session import Session
+
 import streamlit as st
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
+
+###########
+# Define connection parameters
+connection_parameters = {
+    "account": "your_account_id",
+    "user": "your_username",
+    "password": "your_password",
+    "role": "your_role",
+    "warehouse": "your_warehouse",
+    "database": "your_database",
+    "schema": "your_schema",
+}
+
+# Attempt to create a session
+try:
+    new_session = Session.builder.configs(connection_parameters).create()
+    st.success("Successfully connected to Snowflake!")
+except Exception as e:
+    st.error(f"Error creating Snowflake session: {e}")
+########
+
+
+
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie:cup_with_straw:")
