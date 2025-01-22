@@ -97,7 +97,8 @@ import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
 #st.text(smoothiefroot_response.json())
 #print(smoothiefroot_response.text) 
-st.content(smoothiefroot_response)
+#st.content(smoothiefroot_response)
+print("Content-Type:", response.headers.get('Content-Type'))
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
 st.text(smoothiefroot_response)
