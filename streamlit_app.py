@@ -95,7 +95,7 @@ if ingredients_list:
 ###sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
-st.text(smoothiefroot_response.json())
+st.text(smoothiefroot_response.text)
 
 import requests
 smoothiefroot_response = requests.get("https://www.fruityvice.com/#3")
